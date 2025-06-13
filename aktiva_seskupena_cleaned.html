@@ -1,0 +1,330 @@
+
+<!DOCTYPE html>
+
+<html lang="cs">
+<head>
+<meta charset="utf-8"/>
+<title>Aktiva JD</title>
+<style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h2 { color: #2c3e50; }
+        h3 { color: #34495e; margin-left: 10px; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 30px; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .search-box { margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+<div style="margin-bottom: 20px;">
+<button onclick="toggleAllTables(true)">Rozbalit vše</button>
+<button onclick="toggleAllTables(false)">Sbalit vše</button>
+<label for="typFilter">Typ aktiva:</label>
+<select id="typFilter" onchange="applyFilters()">
+<option value="">Vše</option>
+</select>
+<label for="kritFilter">Kritičnost:</label>
+<select id="kritFilter" onchange="applyFilters()">
+<option value="">Vše</option>
+</select>
+</div>
+<h1>Seznam aktiv</h1>
+<div class="search-box">
+<label for="searchInput">🔍 Hledat:</label>
+<input id="searchInput" onkeyup="filterTables()" placeholder="Zadejte hledaný text..." style="width: 300px; padding: 5px;" type="text"/>
+</div>
+<div id="dataContainer">
+<h2>Podpůrné</h2>
+<h3>Bezpečnostní systémy</h3>
+<table class="data-table">
+<tr><th>Nadpis</th><th>Typ aktiva</th><th>Podkategorie aktiva</th><th>Gestor</th><th>Garant</th><th>Typ vlastnictví</th><th>Vlastník aktiva</th><th>Umístění</th><th>Kritičnost</th><th>Důvěrnost</th></tr>
+<tr><td>CCTV</td><td>Podpůrné</td><td>Bezpečnostní systémy</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>3</td><td>Důvěrná</td></tr>
+<tr><td>Přístupové systémy</td><td>Podpůrné</td><td>Bezpečnostní systémy</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>5</td><td>Přísně důvěrná</td></tr>
+<tr><td>Zabezpečovací systémy</td><td>Podpůrné</td><td>Bezpečnostní systémy</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>3</td><td>Přísně důvěrná</td></tr>
+</table>
+<h3>Budovy a prostory</h3>
+<table class="data-table">
+<tr><th>Nadpis</th><th>Typ aktiva</th><th>Podkategorie aktiva</th><th>Gestor</th><th>Garant</th><th>Typ vlastnictví</th><th>Vlastník aktiva</th><th>Umístění</th><th>Kritičnost</th><th>Důvěrnost</th></tr>
+<tr><td>Datové centrum</td><td>Podpůrné</td><td>Budovy a prostory</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>5</td><td>Přísně důvěrná</td></tr>
+</table>
+<h3>IaaS</h3>
+<table class="data-table">
+<tr><th>Nadpis</th><th>Typ aktiva</th><th>Podkategorie aktiva</th><th>Gestor</th><th>Garant</th><th>Typ vlastnictví</th><th>Vlastník aktiva</th><th>Umístění</th><th>Kritičnost</th><th>Důvěrnost</th></tr>
+<tr><td>IaaS</td><td>Podpůrné</td><td>IaaS</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>4</td><td>Přísně důvěrná</td></tr>
+<tr><td>Centrum pro Microsoft Entra</td><td>Podpůrné</td><td>IaaS</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>5</td><td>Přísně důvěrná</td></tr>
+<tr><td>M365 Admin Center</td><td>Podpůrné</td><td>IaaS</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>5</td><td>Přísně důvěrná</td></tr>
+<tr><td>Microsoft Defender</td><td>Podpůrné</td><td>IaaS</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>5</td><td>Přísně důvěrná</td></tr>
+<tr><td>OneDrive</td><td>Podpůrné</td><td>IaaS</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>3</td><td>Důvěrná</td></tr>
+<tr><td>Outlook</td><td>Podpůrné</td><td>IaaS</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>5</td><td>Přísně důvěrná</td></tr>
+<tr><td>Power BI</td><td>Podpůrné</td><td>IaaS</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>3</td><td>Interní</td></tr>
+<tr><td>SharePoint</td><td>Podpůrné</td><td>IaaS</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>4</td><td>Důvěrná</td></tr>
+<tr><td>Teams</td><td>Podpůrné</td><td>IaaS</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>3</td><td>Důvěrná</td></tr>
+</table>
+<h3>IIoT</h3>
+<table class="data-table">
+<tr><th>Nadpis</th><th>Typ aktiva</th><th>Podkategorie aktiva</th><th>Gestor</th><th>Garant</th><th>Typ vlastnictví</th><th>Vlastník aktiva</th><th>Umístění</th><th>Kritičnost</th><th>Důvěrnost</th></tr>
+<tr><td>PLC jednotky</td><td>Podpůrné</td><td>IIoT</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>4</td><td>Interní</td></tr>
+<tr><td>Průmyslové senzory</td><td>Podpůrné</td><td>IIoT</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>3</td><td>Interní</td></tr>
+<tr><td>Robotické systémy</td><td>Podpůrné</td><td>IIoT</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>4</td><td>Interní</td></tr>
+<tr><td>SCADA komponenty</td><td>Podpůrné</td><td>IIoT</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>4</td><td>Přísně důvěrná</td></tr>
+</table>
+<h3>IoT</h3>
+<table class="data-table">
+<tr><th>Nadpis</th><th>Typ aktiva</th><th>Podkategorie aktiva</th><th>Gestor</th><th>Garant</th><th>Typ vlastnictví</th><th>Vlastník aktiva</th><th>Umístění</th><th>Kritičnost</th><th>Důvěrnost</th></tr>
+<tr><td>FVE komponenty</td><td>Podpůrné</td><td>IoT</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>5</td><td>Interní</td></tr>
+<tr><td>Chytré senzory</td><td>Podpůrné</td><td>IoT</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>3</td><td>Interní</td></tr>
+<tr><td>Chytré termostaty</td><td>Podpůrné</td><td>IoT</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>3</td><td>Interní</td></tr>
+<tr><td>IP kamery</td><td>Podpůrné</td><td>IoT</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>2</td><td>Důvěrná</td></tr>
+</table>
+<h3>IT zařízení</h3>
+<table class="data-table">
+<tr><th>Nadpis</th><th>Typ aktiva</th><th>Podkategorie aktiva</th><th>Gestor</th><th>Garant</th><th>Typ vlastnictví</th><th>Vlastník aktiva</th><th>Umístění</th><th>Kritičnost</th><th>Důvěrnost</th></tr>
+<tr><td>Datové nosiče</td><td>Podpůrné</td><td>IT zařízení</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>4</td><td>Přísně důvěrná</td></tr>
+<tr><td>Notebooky</td><td>Podpůrné</td><td>IT zařízení</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>3</td><td>Důvěrná</td></tr>
+<tr><td>Pracovní stanice</td><td>Podpůrné</td><td>IT zařízení</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>3</td><td>Důvěrná</td></tr>
+<tr><td>Servery</td><td>Podpůrné</td><td>IT zařízení</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>5</td><td>Přísně důvěrná</td></tr>
+<tr><td>Tiskárny</td><td>Podpůrné</td><td>IT zařízení</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>1</td><td>Interní</td></tr>
+<tr><td>Záložní zdroje energie</td><td>Podpůrné</td><td>IT zařízení</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>1</td><td>Interní</td></tr>
+</table>
+<h3>Mobilní zařízení</h3>
+<table class="data-table">
+<tr><th>Nadpis</th><th>Typ aktiva</th><th>Podkategorie aktiva</th><th>Gestor</th><th>Garant</th><th>Typ vlastnictví</th><th>Vlastník aktiva</th><th>Umístění</th><th>Kritičnost</th><th>Důvěrnost</th></tr>
+<tr><td>Mobilní zařízení</td><td>Podpůrné</td><td>Mobilní zařízení</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>3</td><td>Důvěrná</td></tr>
+</table>
+<h3>Síťová infrastruktura</h3>
+<table class="data-table">
+<tr><th>Nadpis</th><th>Typ aktiva</th><th>Podkategorie aktiva</th><th>Gestor</th><th>Garant</th><th>Typ vlastnictví</th><th>Vlastník aktiva</th><th>Umístění</th><th>Kritičnost</th><th>Důvěrnost</th></tr>
+<tr><td>Firewally</td><td>Podpůrné</td><td>Síťová infrastruktura</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>5</td><td>Přísně důvěrná</td></tr>
+<tr><td>Kabeláž</td><td>Podpůrné</td><td>Síťová infrastruktura</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>4</td><td>Interní</td></tr>
+<tr><td>Routery</td><td>Podpůrné</td><td>Síťová infrastruktura</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>4</td><td>Přísně důvěrná</td></tr>
+<tr><td>Switche</td><td>Podpůrné</td><td>Síťová infrastruktura</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>4</td><td>Přísně důvěrná</td></tr>
+<tr><td>WiFi</td><td>Podpůrné</td><td>Síťová infrastruktura</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>1</td><td>Interní</td></tr>
+</table>
+<h3>Certifikace a standardy</h3>
+<table class="data-table">
+<tr><th>Nadpis</th><th>Typ aktiva</th><th>Podkategorie aktiva</th><th>Gestor</th><th>Garant</th><th>Typ vlastnictví</th><th>Vlastník aktiva</th><th>Umístění</th><th>Kritičnost</th><th>Důvěrnost</th></tr>
+<tr><td>Certifikace a standardy</td><td>Podpůrné</td><td>Certifikace a standardy</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td></td><td></td></tr>
+</table>
+<h3>Organizační struktura</h3>
+<table class="data-table">
+<tr><th>Nadpis</th><th>Typ aktiva</th><th>Podkategorie aktiva</th><th>Gestor</th><th>Garant</th><th>Typ vlastnictví</th><th>Vlastník aktiva</th><th>Umístění</th><th>Kritičnost</th><th>Důvěrnost</th></tr>
+<tr><td>Organizační struktura</td><td>Podpůrné</td><td>Organizační struktura</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td></td><td></td></tr>
+</table>
+<h3>Plány a strategie</h3>
+<table class="data-table">
+<tr><th>Nadpis</th><th>Typ aktiva</th><th>Podkategorie aktiva</th><th>Gestor</th><th>Garant</th><th>Typ vlastnictví</th><th>Vlastník aktiva</th><th>Umístění</th><th>Kritičnost</th><th>Důvěrnost</th></tr>
+<tr><td>Strategie a plány</td><td>Podpůrné</td><td>Plány a strategie</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td></td><td></td></tr>
+</table>
+<h3>Politiky a směrnice</h3>
+<table class="data-table">
+<tr><th>Nadpis</th><th>Typ aktiva</th><th>Podkategorie aktiva</th><th>Gestor</th><th>Garant</th><th>Typ vlastnictví</th><th>Vlastník aktiva</th><th>Umístění</th><th>Kritičnost</th><th>Důvěrnost</th></tr>
+<tr><td>Interní politiky a směrnice</td><td>Podpůrné</td><td>Politiky a směrnice</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td></td><td>Interní</td></tr>
+</table>
+<h3>Procesy a postupy</h3>
+<table class="data-table">
+<tr><th>Nadpis</th><th>Typ aktiva</th><th>Podkategorie aktiva</th><th>Gestor</th><th>Garant</th><th>Typ vlastnictví</th><th>Vlastník aktiva</th><th>Umístění</th><th>Kritičnost</th><th>Důvěrnost</th></tr>
+<tr><td>Procesy a postupy</td><td>Podpůrné</td><td>Procesy a postupy</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td></td><td></td></tr>
+</table>
+<h3>Smluvní závazky</h3>
+<table class="data-table">
+<tr><th>Nadpis</th><th>Typ aktiva</th><th>Podkategorie aktiva</th><th>Gestor</th><th>Garant</th><th>Typ vlastnictví</th><th>Vlastník aktiva</th><th>Umístění</th><th>Kritičnost</th><th>Důvěrnost</th></tr>
+<tr><td>Smluvní závazky</td><td>Podpůrné</td><td>Smluvní závazky</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>5</td><td>Důvěrná</td></tr>
+</table>
+<h3>Záznamy a evidence</h3>
+<table class="data-table">
+<tr><th>Nadpis</th><th>Typ aktiva</th><th>Podkategorie aktiva</th><th>Gestor</th><th>Garant</th><th>Typ vlastnictví</th><th>Vlastník aktiva</th><th>Umístění</th><th>Kritičnost</th><th>Důvěrnost</th></tr>
+<tr><td>Záznamy a evidence</td><td>Podpůrné</td><td>Záznamy a evidence</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td></td><td></td></tr>
+</table>
+<h3>Komunikační nástroje</h3>
+<table class="data-table">
+<tr><th>Nadpis</th><th>Typ aktiva</th><th>Podkategorie aktiva</th><th>Gestor</th><th>Garant</th><th>Typ vlastnictví</th><th>Vlastník aktiva</th><th>Umístění</th><th>Kritičnost</th><th>Důvěrnost</th></tr>
+<tr><td>Outlook</td><td>Podpůrné</td><td>Komunikační nástroje</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>5</td><td>Přísně důvěrná</td></tr>
+<tr><td>Teams</td><td>Podpůrné</td><td>Komunikační nástroje</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>3</td><td>Interní</td></tr>
+</table>
+<h3>Konfigurační nástroje</h3>
+<table class="data-table">
+<tr><th>Nadpis</th><th>Typ aktiva</th><th>Podkategorie aktiva</th><th>Gestor</th><th>Garant</th><th>Typ vlastnictví</th><th>Vlastník aktiva</th><th>Umístění</th><th>Kritičnost</th><th>Důvěrnost</th></tr>
+<tr><td>Forti EMS</td><td>Podpůrné</td><td>Konfigurační nástroje</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>5</td><td>Přísně důvěrná</td></tr>
+<tr><td>FortiGate Web GUI (FortiOS Web Interface)</td><td>Podpůrné</td><td>Konfigurační nástroje</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>5</td><td>Přísně důvěrná</td></tr>
+<tr><td>Remote Server Administration Tools (RSAT)</td><td>Podpůrné</td><td>Konfigurační nástroje</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>5</td><td>Přísně důvěrná</td></tr>
+<tr><td>VEEAM backup &amp; replication</td><td>Podpůrné</td><td>Konfigurační nástroje</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>5</td><td>Přísně důvěrná</td></tr>
+<tr><td>ZYCOO CooVox Series IP Phone System</td><td>Podpůrné</td><td>Konfigurační nástroje</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td></td><td></td></tr>
+</table>
+<h3>Operační systémy</h3>
+<table class="data-table">
+<tr><th>Nadpis</th><th>Typ aktiva</th><th>Podkategorie aktiva</th><th>Gestor</th><th>Garant</th><th>Typ vlastnictví</th><th>Vlastník aktiva</th><th>Umístění</th><th>Kritičnost</th><th>Důvěrnost</th></tr>
+<tr><td>VMware</td><td>Podpůrné</td><td>Operační systémy</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>5</td><td>Interní</td></tr>
+<tr><td>Windows</td><td>Podpůrné</td><td>Operační systémy</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>5</td><td>Interní</td></tr>
+<tr><td>Windows Server</td><td>Podpůrné</td><td>Operační systémy</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>5</td><td>Interní</td></tr>
+</table>
+<h3>Podnikové aplikace</h3>
+<table class="data-table">
+<tr><th>Nadpis</th><th>Typ aktiva</th><th>Podkategorie aktiva</th><th>Gestor</th><th>Garant</th><th>Typ vlastnictví</th><th>Vlastník aktiva</th><th>Umístění</th><th>Kritičnost</th><th>Důvěrnost</th></tr>
+<tr><td>Aktion</td><td>Podpůrné</td><td>Podnikové aplikace</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>5</td><td>Přísně důvěrná</td></tr>
+<tr><td>Aktivity</td><td>Podpůrné</td><td>Podnikové aplikace</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>2</td><td>Přísně důvěrná</td></tr>
+<tr><td>Alvao</td><td>Podpůrné</td><td>Podnikové aplikace</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>2</td><td>Interní</td></tr>
+<tr><td>euroCALC</td><td>Podpůrné</td><td>Podnikové aplikace</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>5</td><td>Interní</td></tr>
+<tr><td>Helios Nephrite</td><td>Podpůrné</td><td>Podnikové aplikace</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>5</td><td>Přísně důvěrná</td></tr>
+<tr><td>HelpDesk</td><td>Podpůrné</td><td>Podnikové aplikace</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>2</td><td>Interní</td></tr>
+<tr><td>Klaes</td><td>Podpůrné</td><td>Podnikové aplikace</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>5</td><td>Interní</td></tr>
+<tr><td>Klaes e-prod</td><td>Podpůrné</td><td>Podnikové aplikace</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>4</td><td>Interní</td></tr>
+<tr><td>M-Files</td><td>Podpůrné</td><td>Podnikové aplikace</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>4</td><td>Interní</td></tr>
+<tr><td>Power BI Desktop</td><td>Podpůrné</td><td>Podnikové aplikace</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>2</td><td>Interní</td></tr>
+</table>
+<h3>Produktivní nástroje</h3>
+<table class="data-table">
+<tr><th>Nadpis</th><th>Typ aktiva</th><th>Podkategorie aktiva</th><th>Gestor</th><th>Garant</th><th>Typ vlastnictví</th><th>Vlastník aktiva</th><th>Umístění</th><th>Kritičnost</th><th>Důvěrnost</th></tr>
+<tr><td>Excel</td><td>Podpůrné</td><td>Produktivní nástroje</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>4</td><td>Interní</td></tr>
+<tr><td>OneDrive</td><td>Podpůrné</td><td>Produktivní nástroje</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>3</td><td>Důvěrná</td></tr>
+<tr><td>Word</td><td>Podpůrné</td><td>Produktivní nástroje</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>4</td><td>Interní</td></tr>
+</table>
+<h2>Primární</h2>
+<h3>Nestrukturovaná data</h3>
+<table class="data-table">
+<tr><th>Nadpis</th><th>Typ aktiva</th><th>Podkategorie aktiva</th><th>Gestor</th><th>Garant</th><th>Typ vlastnictví</th><th>Vlastník aktiva</th><th>Umístění</th><th>Kritičnost</th><th>Důvěrnost</th></tr>
+<tr><td>Dokumenty</td><td>Primární</td><td>Nestrukturovaná data</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>3</td><td>Interní</td></tr>
+<tr><td>E-maily</td><td>Primární</td><td>Nestrukturovaná data</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>2</td><td>Důvěrná</td></tr>
+<tr><td>Licenční klíče</td><td>Primární</td><td>Nestrukturovaná data</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>2</td><td>Interní</td></tr>
+<tr><td>Logy</td><td>Primární</td><td>Nestrukturovaná data</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>1</td><td>Interní</td></tr>
+<tr><td>Multimediální obsah</td><td>Primární</td><td>Nestrukturovaná data</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>2</td><td>Interní</td></tr>
+<tr><td>Zálohy dat</td><td>Primární</td><td>Nestrukturovaná data</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>4</td><td>Přísně důvěrná</td></tr>
+<tr><td>Zdrojové kódy</td><td>Primární</td><td>Nestrukturovaná data</td><td></td><td></td><td>Externí</td><td></td><td></td><td>1</td><td>Důvěrná</td></tr>
+</table>
+<h3>Strukturovaná data</h3>
+<table class="data-table">
+<tr><th>Nadpis</th><th>Typ aktiva</th><th>Podkategorie aktiva</th><th>Gestor</th><th>Garant</th><th>Typ vlastnictví</th><th>Vlastník aktiva</th><th>Umístění</th><th>Kritičnost</th><th>Důvěrnost</th></tr>
+<tr><td>Databáze</td><td>Primární</td><td>Strukturovaná data</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>5</td><td>Přísně důvěrná</td></tr>
+</table>
+<h3>Znalosti</h3>
+<table class="data-table">
+<tr><th>Nadpis</th><th>Typ aktiva</th><th>Podkategorie aktiva</th><th>Gestor</th><th>Garant</th><th>Typ vlastnictví</th><th>Vlastník aktiva</th><th>Umístění</th><th>Kritičnost</th><th>Důvěrnost</th></tr>
+<tr><td>Bezpečnostní audity</td><td>Primární</td><td>Znalosti</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>1</td><td>Přísně důvěrná</td></tr>
+<tr><td>Finanační analýzy</td><td>Primární</td><td>Znalosti</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>1</td><td>Interní</td></tr>
+<tr><td>Konfigurační soubory</td><td>Primární</td><td>Znalosti</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>3</td><td>Přísně důvěrná</td></tr>
+<tr><td>Obchodní informace</td><td>Primární</td><td>Znalosti</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>4</td><td>Interní</td></tr>
+<tr><td>Osobní údaje</td><td>Primární</td><td>Znalosti</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>4</td><td>Přísně důvěrná</td></tr>
+<tr><td>Technické informace</td><td>Primární</td><td>Znalosti</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>3</td><td>Interní</td></tr>
+<tr><td>Výrobní dokumentace</td><td>Primární</td><td>Znalosti</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td></td><td>Důvěrná</td></tr>
+<tr><td>Výsledky auditů</td><td>Primární</td><td>Znalosti</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>1</td><td>Důvěrná</td></tr>
+<tr><td>Webový obsah</td><td>Primární</td><td>Znalosti</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>3</td><td>Veřejná</td></tr>
+</table>
+<h3>IT služby</h3>
+<table class="data-table">
+<tr><th>Nadpis</th><th>Typ aktiva</th><th>Podkategorie aktiva</th><th>Gestor</th><th>Garant</th><th>Typ vlastnictví</th><th>Vlastník aktiva</th><th>Umístění</th><th>Kritičnost</th><th>Důvěrnost</th></tr>
+<tr><td>Datová analytika a reporting BI</td><td>Primární</td><td>IT služby</td><td>Novický Daniel</td><td>Vaněk Jakub</td><td>Pronajaté</td><td></td><td></td><td>3</td><td>Interní</td></tr>
+<tr><td>Digitalizace a automatizace procesů</td><td>Primární</td><td>IT služby</td><td>Novický Daniel</td><td></td><td>Vlastní</td><td></td><td></td><td>3</td><td>Interní</td></tr>
+<tr><td>Kybernetická bezpečnost</td><td>Primární</td><td>IT služby</td><td>Novický Daniel</td><td>Drbušek Jiří Ing.</td><td>Vlastní</td><td></td><td></td><td>5</td><td>Přísně důvěrná</td></tr>
+<tr><td>Nákup a evidence výpočetní techniky</td><td>Primární</td><td>IT služby</td><td>Novický Daniel</td><td>Džambik Pavel</td><td>Vlastní</td><td></td><td></td><td>2</td><td>Interní</td></tr>
+<tr><td>Podpora HR a docházkových systémů</td><td>Primární</td><td>IT služby</td><td>Novický Daniel</td><td>Vaněk Jakub</td><td>Vlastní</td><td></td><td></td><td>4</td><td>Interní</td></tr>
+<tr><td>Podpora uživatelů (Helpdesk)</td><td>Primární</td><td>IT služby</td><td></td><td></td><td>Vlastní</td><td></td><td></td><td>3</td><td>Interní</td></tr>
+<tr><td>Podpora výrobních technologií</td><td>Primární</td><td>IT služby</td><td>Novický Daniel</td><td></td><td>Vlastní</td><td></td><td></td><td>2</td><td>Interní</td></tr>
+<tr><td>Provoz a správa datového centra</td><td>Primární</td><td>IT služby</td><td>Novický Daniel</td><td>Brabec Jaroslav</td><td>Vlastní</td><td></td><td></td><td>5</td><td>Interní</td></tr>
+<tr><td>Provoz a správa informačních systémů ERP</td><td>Primární</td><td>IT služby</td><td>Novický Daniel</td><td></td><td>Vlastní</td><td></td><td></td><td>5</td><td>Interní</td></tr>
+<tr><td>Provoz a správa podnikových aplikací</td><td>Primární</td><td>IT služby</td><td>Novický Daniel</td><td></td><td>Vlastní</td><td></td><td></td><td>5</td><td>Interní</td></tr>
+<tr><td>Provoz a správa prostředků výpočetní techniky</td><td>Primární</td><td>IT služby</td><td>Novický Daniel</td><td></td><td>Vlastní</td><td></td><td></td><td>4</td><td>Interní</td></tr>
+<tr><td>Provoz a správa síťové infrastruktury</td><td>Primární</td><td>IT služby</td><td></td><td>Novický Daniel</td><td>Vlastní</td><td></td><td></td><td>5</td><td>Interní</td></tr>
+<tr><td>Provoz a správa stavebních SW CAD/BIM</td><td>Primární</td><td>IT služby</td><td>Novický Daniel</td><td>Žilková Marie Ing.</td><td>Vlastní</td><td></td><td></td><td>5</td><td>Interní</td></tr>
+<tr><td>Provoz a správa výrobních SW okenářské výroby CAD/CAM</td><td>Primární</td><td>IT služby</td><td>Novický Daniel</td><td>Janeček Stanislav</td><td>Vlastní</td><td></td><td></td><td>5</td><td>Interní</td></tr>
+<tr><td>Řízení IT projektů a integrace systémů</td><td>Primární</td><td>IT služby</td><td>Novický Daniel</td><td>Drbušek Jiří Ing.</td><td>Vlastní</td><td></td><td></td><td>2</td><td>Interní</td></tr>
+<tr><td>Správa elektronické dokumentace DMS</td><td>Primární</td><td>IT služby</td><td>Novický Daniel</td><td></td><td>Vlastní</td><td></td><td></td><td>3</td><td>Interní</td></tr>
+<tr><td>Správa IaaS</td><td>Primární</td><td>IT služby</td><td>Novický Daniel</td><td>Drbušek Jiří Ing.</td><td>Vlastní</td><td></td><td></td><td>5</td><td>Interní</td></tr>
+<tr><td>Správa IoT a IIoT zařízení a systémů</td><td>Primární</td><td>IT služby</td><td>Novický Daniel</td><td>Brabec Jaroslav</td><td>Vlastní</td><td></td><td></td><td>4</td><td>Interní</td></tr>
+<tr><td>Správa komunikačních zařízení a systémů</td><td>Primární</td><td>IT služby</td><td>Novický Daniel</td><td></td><td>Vlastní</td><td></td><td></td><td>5</td><td>Interní</td></tr>
+<tr><td>Správa SaaS</td><td>Primární</td><td>IT služby</td><td>Novický Daniel</td><td>Drbušek Jiří Ing.</td><td>Vlastní</td><td></td><td></td><td>5</td><td>Interní</td></tr>
+</table>
+</div>
+<script>
+        function filterTables() {
+            var input = document.getElementById("searchInput");
+            var filter = input.value.toLowerCase();
+            var tables = document.querySelectorAll(".data-table");
+            tables.forEach(function(table) {
+                var rows = table.getElementsByTagName("tr");
+                for (var i = 1; i < rows.length; i++) {
+                    var cells = rows[i].getElementsByTagName("td");
+                    var match = false;
+                    for (var j = 0; j < cells.length; j++) {
+                        if (cells[j].innerText.toLowerCase().indexOf(filter) > -1) {
+                            match = true;
+                            break;
+                        }
+                    }
+                    rows[i].style.display = match ? "" : "none";
+                }
+            });
+        }
+    </script>
+<script>
+function toggleTable(header) {
+    const table = header.nextElementSibling;
+    if (table && table.tagName === "TABLE") {
+        table.style.display = table.style.display === "none" ? "table" : "none";
+    }
+}
+
+function toggleAllTables(expand) {
+    const tables = document.querySelectorAll("h3 + table");
+    tables.forEach(table => {
+        table.style.display = expand ? "table" : "none";
+    });
+}
+
+function applyFilters() {
+    const typ = document.getElementById("typFilter").value.toLowerCase();
+    const krit = document.getElementById("kritFilter").value.toLowerCase();
+    const tables = document.querySelectorAll("h3 + table");
+
+    tables.forEach(table => {
+        let show = true;
+        const rows = table.querySelectorAll("tr");
+        for (let i = 1; i < rows.length; i++) {
+            const cells = rows[i].children;
+            const typCell = cells[1] ? cells[1].textContent.toLowerCase() : "";
+            const kritCell = cells[2] ? cells[2].textContent.toLowerCase() : "";
+            const matchTyp = !typ || typCell.includes(typ);
+            const matchKrit = !krit || kritCell.includes(krit);
+            rows[i].style.display = matchTyp && matchKrit ? "" : "none";
+            if (!(matchTyp && matchKrit)) show = false;
+        }
+        table.style.display = show ? "table" : "none";
+    });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    const headers = document.querySelectorAll("h3");
+    headers.forEach(header => {
+        header.style.cursor = "pointer";
+        header.addEventListener("click", () => toggleTable(header));
+    });
+
+    const typSet = new Set();
+    const kritSet = new Set();
+    const tables = document.querySelectorAll("h3 + table");
+    tables.forEach(table => {
+        const rows = table.querySelectorAll("tr");
+        for (let i = 1; i < rows.length; i++) {
+            const cells = rows[i].children;
+            if (cells[1]) typSet.add(cells[1].textContent.trim());
+            if (cells[2]) kritSet.add(cells[2].textContent.trim());
+        }
+    });
+
+    const typFilter = document.getElementById("typFilter");
+    const kritFilter = document.getElementById("kritFilter");
+    typSet.forEach(val => {
+        const opt = document.createElement("option");
+        opt.value = val;
+        opt.textContent = val;
+        typFilter.appendChild(opt);
+    });
+    kritSet.forEach(val => {
+        const opt = document.createElement("option");
+        opt.value = val;
+        opt.textContent = val;
+        kritFilter.appendChild(opt);
+    });
+
+    toggleAllTables(false);
+});
+</script></body>
+</html>
